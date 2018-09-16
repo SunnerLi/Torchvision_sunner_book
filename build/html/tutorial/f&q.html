@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>F &amp; Q &mdash; Torchvision_sunner 18.09.09 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Example 5: Train-test-split" href="example5.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Torchvision_sunner
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">What is Torchvision_sunner?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_start.html">Let’s Get Start!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read.html">Extend your data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">torchvision_sunner.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loader.html">torchvision_sunner.data.loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">torchvision_sunner.transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="categorical.html">torchvision_sunner.transforms.categorical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function.html">torchvision_sunner.transforms.function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constant.html">Constant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example1.html">Example 1: Deal with Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Example 2: Deal with Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example3.html">Example 3: Deal with Categorical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example4.html">Example 4: Tackle with CityScapes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example5.html">Example 5: Train-test-split</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">F &amp; Q</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Torchvision_sunner</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>F &amp; Q</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorial/f&amp;q.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="f-q">
+<span id="f-q"></span><h1>F &amp; Q<a class="headerlink" href="#f-q" title="永久链接至标题">¶</a></h1>
+<p><strong>Q1: It’s confusing to trace for every rank notice in augmentation!</strong></p>
+<p>For simplify, almost every augmentations require <code class="docutils literal notranslate"><span class="pre">BCHW</span></code> rank format. Especially for <code class="docutils literal notranslate"><span class="pre">Resize</span></code>. Because we use <code class="docutils literal notranslate"><span class="pre">skimage</span></code> package to deal with the computation, but it only accept <code class="docutils literal notranslate"><span class="pre">BHWC</span></code> rank format. As the result, it’s recommand to use <code class="docutils literal notranslate"><span class="pre">Resize</span></code> at first, and then concatenate the other augmentation after that. Just like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)),</span>
+    <span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">Transpose</span><span class="p">(</span><span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">BHWC2BCHW</span><span class="p">),</span>
+    <span class="c1"># other augmentation...</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Q2: Which augmentations only accept the value range of [-1, 1]?</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CategoricalTranspose</span></code> is the only augmentation which need to do the normalization first. We recommand you to call this function at last. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="c1"># Do something augmentation first</span>
+    <span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(),</span>
+    <span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">CategoricalTranspose</span><span class="p">(</span><span class="n">sunnerTransforms</span><span class="o">.</span><span class="n">COLOR2ONEHOT</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="example5.html" class="btn btn-neutral" title="Example 5: Train-test-split" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, SunnerLi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'18.09.09',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

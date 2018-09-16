@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>torchvision_sunner.data &mdash; Torchvision_sunner 18.09.09 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="torchvision_sunner.data.loader" href="loader.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Torchvision_sunner
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">What is Torchvision_sunner?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_start.html">Let’s Get Start!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read.html">Extend your data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">torchvision_sunner.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-torchvision-sunner-data-imagefolder-source">class torchvision_sunner.data.ImageFolder [source]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#paeameters">Paeameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#class-torchvision-sunner-data-videofolder-source">class torchvision_sunner.data.VideoFolder [source]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#paeameters">Paeameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="loader.html">torchvision_sunner.data.loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">torchvision_sunner.transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="categorical.html">torchvision_sunner.transforms.categorical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function.html">torchvision_sunner.transforms.function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constant.html">Constant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example1.html">Example 1: Deal with Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Example 2: Deal with Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example3.html">Example 3: Deal with Categorical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example4.html">Example 4: Tackle with CityScapes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example5.html">Example 5: Train-test-split</a></li>
+<li class="toctree-l1"><a class="reference internal" href="f&amp;q.html">F &amp; Q</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Torchvision_sunner</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>torchvision_sunner.data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorial/data.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="torchvision-sunner-data">
+<span id="torchvision-sunner-data"></span><h1>torchvision_sunner.data<a class="headerlink" href="#torchvision-sunner-data" title="永久链接至标题">¶</a></h1>
+<p>In the <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.data</span></code> module, we provide for two different dataset: <code class="docutils literal notranslate"><span class="pre">ImageFolder</span></code> and <code class="docutils literal notranslate"><span class="pre">VideoFolder</span></code>. You can load the images in different domain right away by using <code class="docutils literal notranslate"><span class="pre">ImageFolder</span></code>. On the other hand, you can also load the video sequences in different domain right away by using <code class="docutils literal notranslate"><span class="pre">VideoFolder</span></code>.</p>
+<div class="section" id="class-torchvision-sunner-data-imagefolder-source">
+<span id="class-torchvision-sunner-data-imagefolder-source"></span><h2>class torchvision_sunner.data.ImageFolder [<a class="reference external" href="https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/image_dataset.py#L34">source</a>]<a class="headerlink" href="#class-torchvision-sunner-data-imagefolder-source" title="永久链接至标题">¶</a></h2>
+<p>This is the fundemental class in <code class="docutils literal notranslate"><span class="pre">torchvision_sunner</span></code>, and it’s inherit from <code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code>. You can just create the instance by the following way. We assume the two different image folders are <code class="docutils literal notranslate"><span class="pre">image_folder1</span></code> and <code class="docutils literal notranslate"><span class="pre">image_folder2</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">sunnerData</span><span class="o">.</span><span class="n">ImageDataset</span><span class="p">(</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;image_folder1&#39;</span><span class="p">],</span> 
+        <span class="p">[</span><span class="s1">&#39;image_folder2&#39;</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;.remain.pkl&#39;</span><span class="p">,</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+        <span class="n">sunnertransforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This class also support for paired data! If the number of image in each folder is the same, then the corresponding data will be gotten. For example, you want to train for <code class="docutils literal notranslate"><span class="pre">pix2pix</span></code> which needs pair data, and you can write as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">sunnerData</span><span class="o">.</span><span class="n">ImageDataset</span><span class="p">(</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;draft_folder&#39;</span><span class="p">],</span>   <span class="c1"># This folder contain 2000 draft images</span>
+        <span class="p">[</span><span class="s1">&#39;bag_folder&#39;</span><span class="p">]</span>      <span class="c1"># This folder contain 2000 bag images</span>
+    <span class="p">],</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;.remain.pkl&#39;</span><span class="p">,</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+        <span class="n">sunnertransforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The corresponding draft image and bag image will be raise.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">img_draft</span><span class="p">,</span> <span class="n">img_bag</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+    <span class="c1"># Do something computing</span>
+</pre></div>
+</div>
+<p>You can use the loader just the same as usual <code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code> instance. In the default setting, the type of the return object is <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>, and the rank format is <code class="docutils literal notranslate"><span class="pre">BHWC</span></code>. You should use <code class="docutils literal notranslate"><span class="pre">ToTensor()</span></code> augmentation function to change into <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> type, and use <code class="docutils literal notranslate"><span class="pre">Transpose(torchvision_sunner.transforms.BHWC2BCHW)</span></code> to change the rank format into <code class="docutils literal notranslate"><span class="pre">BCHW</span></code>.</p>
+<div class="section" id="paeameters">
+<span id="paeameters"></span><h3>Paeameters<a class="headerlink" href="#paeameters" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><strong>root (list of list) -</strong> The list of different image domain. You <strong>must use list of list</strong> to represent the different domain. Each element in the inner list can be the path of <strong>image</strong> or the path of <strong>folder</strong>. Also, you can mutually to combine the single domain. We list some example:</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">],</span> <span class="p">[</span><span class="n">image2</span><span class="o">.</span><span class="n">jpg</span><span class="p">]]</span>                                <span class="c1"># This is valid</span>
+<span class="p">[[</span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">],</span> <span class="p">[</span><span class="n">image_folder</span><span class="p">]]</span>                              <span class="c1"># This is valid</span>
+<span class="p">[[</span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span><span class="p">],</span> <span class="p">[</span><span class="n">image_folder1</span><span class="p">,</span> <span class="n">image_folder2</span><span class="p">]]</span>  <span class="c1"># This is valid</span>
+<span class="p">[[</span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image_folder</span><span class="p">]]</span>                                <span class="c1"># This is also valid</span>
+<span class="p">[</span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image2</span><span class="o">.</span><span class="n">jpg</span><span class="p">]</span>                                    <span class="c1"># This is invalid!</span>
+<span class="p">[</span><span class="n">image1</span><span class="o">.</span><span class="n">jpg</span><span class="p">,</span> <span class="n">image_folder</span><span class="p">]</span>                                  <span class="c1"># This is invalid!</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>file_name (str) -</strong> The name of record file. In the design of <code class="docutils literal notranslate"><span class="pre">torchvision_sunner</span></code> toolkit, we will store some information into the single <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> file. This mechanism can avoid the program to tranversal the storage next time but read the information from the file only. This parameter will assign the path of record file. In the default, the name of record file is <code class="docutils literal notranslate"><span class="pre">.remain.pkl</span></code>.</li>
+<li><strong>sample_method (int) -</strong> The method to deal with data unbalance. Since the number of images may not the same in different domains. We provide for <strong>under sampling</strong> or <strong>over sampling</strong> two choice. You can assign as <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.UNDER_SAMPLING</span></code> or <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.OVER_SAMPLING</span></code>, respectively.</li>
+<li><strong>transform (torchvision.transforms.Compose) -</strong> The series of augmentation. You can use the augmentation methods which are defined in <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.transforms</span></code>. Check the <a class="reference external" href="transforms.html">page</a> for the detail</li>
+<li><strong>split_ratio (float) -</strong> The ratio to do the train-test split. The range of this ratio is between 0 to 1. The split process will not be conducted if you set the ratio as <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</li>
+<li><strong>save_file (Bool) -</strong> The flag to control if storing the record file. Since there is some cases that the user don’t have priority to do the IO, or the environment doesn’t have the storage to store the record file, we provide this mechanism. Anything will not be saved if you set this flag as <code class="docutils literal notranslate"><span class="pre">False</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="class-torchvision-sunner-data-videofolder-source">
+<span id="class-torchvision-sunner-data-videofolder-source"></span><h2>class torchvision_sunner.data.VideoFolder [<a class="reference external" href="https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/video_dataset.py#L35">source</a>]<a class="headerlink" href="#class-torchvision-sunner-data-videofolder-source" title="永久链接至标题">¶</a></h2>
+<p>This class is the video version of <code class="docutils literal notranslate"><span class="pre">ImageFolder</span></code>, and it’s also inherit from <code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code>. You can just create the instance by the following way. We assume the two different image folders are <code class="docutils literal notranslate"><span class="pre">video_folder1</span></code> and <code class="docutils literal notranslate"><span class="pre">video_folder2</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">sunnerData</span><span class="o">.</span><span class="n">ImageDataset</span><span class="p">(</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;video_folder1&#39;</span><span class="p">],</span> 
+        <span class="p">[</span><span class="s1">&#39;video_folder2&#39;</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;.remain.pkl&#39;</span><span class="p">,</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+        <span class="n">sunnertransforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>For the function of the <code class="docutils literal notranslate"><span class="pre">VideoFolder</span></code>. We will use <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> package to split each video, and save into a temporal folder. During loading the data, we only send a small sequence of video to supply the program. For example, the single video migh have 9876 frames. But in single batch, we only provide 10 frames. This mechanism can make the program reduce the burden in avoid to load the whole 9876 frames into RAM at the same time.</p>
+<ul class="simple">
+<li><strong>Notice:</strong> The single record file only store the information of the list of different domain, and also store one kinds of folder information. If you want to use multiple dataset in your program, you should assign different name of <code class="docutils literal notranslate"><span class="pre">file_path</span></code>, or the program cannot load the correct information.</li>
+<li><strong>Notice:</strong> The rank format of <code class="docutils literal notranslate"><span class="pre">ImageFolder</span></code> return is <code class="docutils literal notranslate"><span class="pre">BHWC</span></code>, but the rank format of <code class="docutils literal notranslate"><span class="pre">VideoFolder</span></code> return is <code class="docutils literal notranslate"><span class="pre">BTHWC</span></code>.</li>
+</ul>
+<div class="section" id="paeameters">
+<span id="id1"></span><h3>Paeameters<a class="headerlink" href="#paeameters" title="永久链接至标题">¶</a></h3>
+<p>The parameters are very similar to the <code class="docutils literal notranslate"><span class="pre">ImageFolder</span></code>.</p>
+<ul class="simple">
+<li><strong>root (list of list) -</strong> The list of different image domain. You <strong>must use list of list</strong> to represent the different domain. Each element in the inner list can be the path of <strong>video</strong> or the path of <strong>folder</strong>. Also, you can mutually to combine the single domain. We list some example:</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">video1</span><span class="o">.</span><span class="n">mp4</span><span class="p">],</span> <span class="p">[</span><span class="n">video2</span><span class="o">.</span><span class="n">mp4</span><span class="p">]]</span>                                <span class="c1"># This is valid</span>
+<span class="p">[[</span><span class="n">video1</span><span class="o">.</span><span class="n">mp4</span><span class="p">],</span> <span class="p">[</span><span class="n">video_folder</span><span class="p">]]</span>                              <span class="c1"># This is valid</span>
+<span class="p">[[</span><span class="n">video1</span><span class="o">.</span><span class="n">mp4</span><span class="p">,</span> <span class="n">video2</span><span class="o">.</span><span class="n">mp4</span><span class="p">],</span> <span class="p">[</span><span class="n">video_folder1</span><span class="p">,</span> <span class="n">video_folder2</span><span class="p">]]</span>  <span class="c1"># This is valid</span>
+<span class="p">[[</span><span class="n">video1</span><span class="o">.</span><span class="n">mp4</span><span class="p">,</span> <span class="n">video_folder</span><span class="p">]]</span>                                <span class="c1"># This is also valid</span>
+<span class="p">[</span><span class="n">video1</span><span class="o">.</span><span class="n">mp4</span><span class="p">,</span> <span class="n">video2</span><span class="o">.</span><span class="n">mp4</span><span class="p">]</span>                                    <span class="c1"># This is invalid!</span>
+<span class="p">[</span><span class="n">video1</span><span class="o">.</span><span class="n">mp4</span><span class="p">,</span> <span class="n">video_folder</span><span class="p">]</span>                                  <span class="c1"># This is invalid!</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>file_name (str) -</strong> The name of record file. In the design of <code class="docutils literal notranslate"><span class="pre">torchvision_sunner</span></code> toolkit, we will store some information into the single <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> file. This mechanism can avoid the program to tranversal the storage next time but read the information from the file only. This parameter will assign the path of record file. In the default, the name of record file is <code class="docutils literal notranslate"><span class="pre">.remain.pkl</span></code>.</li>
+<li><strong>T (int) -</strong> The maximun length of small video sequence, and it’s the second dimension in the tensor’s rank. The default of T is 10.</li>
+<li><strong>sample_method (int) -</strong> The method to deal with data unbalance. Since the number of videos may not the same in different domains. We provide for <strong>under sampling</strong> or <strong>over sampling</strong> two choice. You can assign as <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.UNDER_SAMPLING</span></code> or <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.OVER_SAMPLING</span></code>, respectively.</li>
+<li><strong>transform (torchvision.transforms.Compose) -</strong> The series of augmentation. You can use the augmentation methods which are defined in <code class="docutils literal notranslate"><span class="pre">torchvision_sunner.transforms</span></code>. Check the <a class="reference external" href="transforms.html">page</a> for the detail</li>
+<li><strong>split_ratio (float) -</strong> The ratio to do the train-test split. The range of this ratio is between 0 to 1. The split process will not be conducted if you set the ratio as <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</li>
+<li><strong>decode_root (str) -</strong> The path to store the ffmpeg decode result. In the default, the frames will be stored in <code class="docutils literal notranslate"><span class="pre">.decode</span></code></li>
+<li><strong>save_file (bool) -</strong> The flag to control if storing the record file. Since there is some cases that the user don’t have priority to do the IO, or the environment doesn’t have the storage to store the record file, we provide this mechanism. Anything will not be saved if you set this flag as <code class="docutils literal notranslate"><span class="pre">False</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="loader.html" class="btn btn-neutral float-right" title="torchvision_sunner.data.loader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, SunnerLi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'18.09.09',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
