@@ -2,7 +2,7 @@
 
 In the ``torchvision_sunner.data`` module, we provide for two different dataset: ``ImageFolder`` and ``VideoFolder``. You can load the images in different domain right away by using ``ImageFolder``. On the other hand, you can also load the video sequences in different domain right away by using ``VideoFolder``. 
 
-## class torchvision_sunner.data.ImageFolder [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/image_dataset.py#L34)]
+## class torchvision_sunner.data.ImageFolder [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/image_dataset.py#L35)]
 
 This is the fundemental class in ``torchvision_sunner``, and it's inherit from ``torch.utils.data.Dataset``. You can just create the instance by the following way. We assume the two different image folders are ``image_folder1`` and ``image_folder2``. 
 ```python
@@ -60,7 +60,7 @@ You can use the loader just the same as usual ``torch.utils.data.Dataset`` insta
 
 * **save_file (Bool) -** The flag to control if storing the record file. Since there is some cases that the user don't have priority to do the IO, or the environment doesn't have the storage to store the record file, we provide this mechanism. Anything will not be saved if you set this flag as ``False``. The default is ``False``. 
 
-## class torchvision_sunner.data.VideoFolder [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/video_dataset.py#L35)]
+## class torchvision_sunner.data.VideoFolder [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/video_dataset.py#L37)]
 
 This class is the video version of ``ImageFolder``, and it's also inherit from ``torch.utils.data.Dataset``. You can just create the instance by the following way. We assume the two different image folders are ``video_folder1`` and ``video_folder2``. 
 ```python

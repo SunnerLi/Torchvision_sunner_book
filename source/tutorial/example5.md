@@ -1,6 +1,6 @@
 # Example 5: Train-test-split
 
-The full program can be found [here](???). This example will demonstrate how to split some data as testing data, and remain the rest one as training data. You can achieve this goal by setting ``split_ratio`` as non-zero and setting ``save_file`` flag as ``True``. Here is the example:
+The full program can be found [here](https://github.com/SunnerLi/Torchvision_sunner/blob/master/example/simple_split_example.py). This example will demonstrate how to split some data as testing data, and remain the rest one as training data. You can achieve this goal by setting ``split_ratio`` as non-zero and setting ``save_file`` flag as ``True``. Here is the example:
 ```python
 train_dataset = sunnerData.ImageDataset(
     root = [['image_folder']], 

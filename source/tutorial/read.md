@@ -2,7 +2,7 @@
 
 Before the instruction of each API, the most important feature should be clearified. Even though you can call the API which ``Torchvision_sunner`` provides, the only file you need to **much** realize is ``Torchvision_sunner.read.py``. Also, **you might need to revise this script to handle for your own data!** This script define the two functions, and they help you to deal with other data format!
 
-## torchvision_sunner.read.readContains [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/read.py#L14)]
+## torchvision_sunner.read.readContains [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/read.py#L14)]
 
 ```python
 def readContain(folder_name):
@@ -26,7 +26,7 @@ def readContain(folder_name):
 ```
 The above quote shows the original definition of the function. This function will load the containing in the particular folder. However, this function only deal with ``JPG``, ``PNG`` and ``MP4`` file format. **If you want to process with extra data format, you should revise by yourself!** Just add the other ``elif`` statement like the previous lines.
 
-## torchvision_sunner.read.readItem [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/read.py#L42)]
+## torchvision_sunner.read.readItem [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/read.py#L42)]
 
 ```python
 def readItem(item_name):

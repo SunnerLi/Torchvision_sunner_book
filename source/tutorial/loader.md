@@ -30,7 +30,7 @@ loader = data.DataLoader(
 )
 ```
 
-## torchvision_sunner.data.ImageLoader [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/loader.py#L5)]
+## torchvision_sunner.data.ImageLoader [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/loader.py#L14)]
 
 The wrapper of the ``DataLoader``. This function provides few parameters to construct the data loader. If you want to assign the parameter of loader for more detail, we recommand you to use the torchvision original dataloader
 
@@ -40,7 +40,7 @@ The wrapper of the ``DataLoader``. This function provides few parameters to cons
 * **shuffle (bool) -** To shuffle the image or not
 * **num_workers (int) -** The number of process you want to create to load the data
 
-## torchvision_sunner.data.MultiLoader [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/loader.py#L25)]
+## torchvision_sunner.data.MultiLoader [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/loader.py#L34)]
 
 This class can deal with multiple dataset object. The usage of ``MultiLoader`` is as same as other data loader. For example:
 ```python
@@ -61,7 +61,7 @@ loader = sunnerData.MultiLoader([dataset1, dataset2], num_workers = 2)
 * **shuffle (bool) -** To shuffle the image or not
 * **num_workers (int) -** The number of process you want to create to load the data
 
-## torchvision_sunner.data.IterationLoader [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/data/loader.py#L73)]
+## torchvision_sunner.data.IterationLoader [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/loader.py#L90)]
 
 This class can wrap the loader into iteration view. For the usual usage, we might go through the whole data for multiple rounds. In this case, we call ``epoch`` for each round. However, we might not need much training step conversely. On the other hand, we can load the data for rigid number of ``iteration`` and save the time. Here is the usage to assign loading the batch data for 30000 times: 
 

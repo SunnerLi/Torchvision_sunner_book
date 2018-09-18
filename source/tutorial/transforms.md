@@ -4,9 +4,9 @@ This module define the augmentation functions. In this page, we will intorduce t
 ```python
 import torchvision_sunner.transforms as sunnertransforms
 ```
-In default, the whole augmentations are covered as the class interface. So you should create the operation instance first, and use it to do the augmentation next. The ``torchvision_sunner.transforms`` also defines some function that the user can call directly. You can check [here]() for detail.
+In default, the whole augmentations are covered as the class interface. So you should create the operation instance first, and use it to do the augmentation next. The ``torchvision_sunner.transforms`` also defines some function that the user can call directly. You can check [here](function.html) for detail.
 
-## torchvision_sunner.transforms.OP [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/base.py#L8)]
+## torchvision_sunner.transforms.OP [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/base.py#L10)]
 
 There two kinds of operators toward augmentations. The first one is simple category. The operation is the same with arbitrary rank format or input type. The other one is complex category, we should consider for different cases toward different rank format or input type. This function provide an interface to deal with complex operation. The instance of this function cannot be create directly. But you can inherit this class, and create the new augmentation class in the future. 
 
@@ -17,7 +17,7 @@ This function define the process while the instance is called.
 #### Parameters
 * **tensor (arbitrary) -** The tensor you want to deal with. The type of this parameter can be ``torch.Tensor`` or ``np.ndarray``. Also, the length of tensor rank can be 4 or 5. 
 
-## torchvision_sunner.transforms.ToTensor [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/simple.py#L11)]
+## torchvision_sunner.transforms.ToTensor [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L13)]
 
 Change the type of tensor as ``torch.Tensor``. If the type of input is already ``torch.Tensor``, the function will return the parameters directly. Here is the usage:
 ```python
@@ -35,7 +35,7 @@ input = op(input)
 #### Parameters
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.ToFloat [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/simple.py#L25)]
+## torchvision_sunner.transforms.ToFloat [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L28)]
 
 Change the type of tensor as float type, which means ``torch.FloatTensor``. You should notice that this function should be called **after you wnsure the type of tensor is ``torch.Tensor``**. Here is the usage:
 ```python
@@ -54,7 +54,7 @@ input = op(input)
 #### Parameters
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.Transpose [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/simple.py#L37)]
+## torchvision_sunner.transforms.Transpose [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L41)]
 
 Transpose the rank format toward the given tensor. You should be careful to ensure the rank format while you use this function. Here is the usage:
 
@@ -79,7 +79,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.Resize [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/complex.py#L12)]
+## torchvision_sunner.transforms.Resize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L14)]
 
 This function is complex operation. Resize the tensor into corresponding size. You **don't** need to normalize the tensor before you call this function. Here is the usage:
 
@@ -105,7 +105,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.Normalize [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/complex.py#L50)]
+## torchvision_sunner.transforms.Normalize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L53)]
 
 This function is complex operation. Normalize the tensor for the given tensor. If you don't assign mean and std, then we treat the range of input tensor is [0, 255]. Here is the usage:
 
@@ -134,7 +134,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.UnNormalize [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/complex.py#L90)]
+## torchvision_sunner.transforms.UnNormalize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L93)]
 
 This function is complex operation. Un-normalize the tensor for the given tensor. If you don't assign mean and std, then we treat the range of input tensor is [0, 255]. Here is the usage:
 
@@ -161,7 +161,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.ToGray [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/complex.py#L121)]
+## torchvision_sunner.transforms.ToGray [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L125)]
 
 This function is complex operation. Transfer the tensor into gray-scale. Here is the usage:
 

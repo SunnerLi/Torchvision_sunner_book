@@ -1,11 +1,11 @@
 ## torchvision_sunner.transforms.categorical
 
-Categorical API is the advance topic in this package. If you want to realize the whole usage, please refer to the tutorial [here](). This pages only shows the parameters. You only need to import the same module and you can start:
+Categorical API is the advance topic in this package. If you want to realize the whole usage, please refer to the tutorial [here](example3.html). This pages only shows the parameters. You only need to import the same module and you can start:
 ```python
 import torchvision_sunner.transforms as sunnertransforms
 ```
 
-### torchvision_sunner.transforms.categorical.getCategoricalMapping [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/categorical.py#L60)]
+### torchvision_sunner.transforms.categorical.getCategoricalMapping [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/categorical.py#L70)]
 
 This function will obtain the pallete object. Here is the usage:
 ```python
@@ -19,7 +19,7 @@ pallete = sunnertransforms.getCategoricalMapping(loader, path = 'pallete.json')
 #### Return
 The list of pallete. In the usual usage, we only need the single pallete. Thus use ``pallete[0]`` to get the pallete object.
 
-### torchvision_sunner.transforms.categorical.CategoricalTranspose [[source](https://github.com/SunnerLi/Torchvision_sunner2/blob/master/torchvision_sunner/transforms/categorical.py#L106)]
+### torchvision_sunner.transforms.categorical.CategoricalTranspose [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/categorical.py#L116)]
 
 Transfer the tensor into particular representation. Here is the usage:
 ```python

@@ -1,6 +1,6 @@
 # Example 4: Tackle with CityScapes
 
-The full program can be found [here](???). The powerful of the ``torchvision_sunner`` is that the package can build the pallete automatically. This help you can construct the pallete for various dataset. Before you need to start your training, you should generate the pallete. First, you should create the loader which only contains labels:
+The full program can be found [here](https://github.com/SunnerLi/Torchvision_sunner/blob/master/example/simple_cityscapes_example.py). The powerful of the ``torchvision_sunner`` is that the package can build the pallete automatically. This help you can construct the pallete for various dataset. Before you need to start your training, you should generate the pallete. First, you should create the loader which only contains labels:
 ```python
 loader = sunnerData.DataLoader(sunnerData.ImageDataset(
     root = [
