@@ -79,6 +79,31 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
+## torchvision_sunner.transforms.RandomHorizontalFlip [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L68)]
+
+Flip the tensor toward horizontal direction randomly. Here is the usage:
+
+* **Notice :** You should transfer the tensor into rank format ``BCHW`` first.
+
+```python
+# Use it uniquely
+op = sunnertransforms.RandomHorizontalFlip()
+input = op(input)
+
+# Use it with other augmentation
+op = torchvision.transforms.Compose([
+    sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
+    sunnertransforms.RandomHorizontalFlip()
+])
+input = op(input)
+``` 
+
+#### Parameters
+* **p  (float)  -** The probability you want to flip, and the value should locate in [0.0, 1.0]
+
+(inference)
+* **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
+
 ## torchvision_sunner.transforms.Resize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L14)]
 
 This function is complex operation. Resize the tensor into corresponding size. You **don't** need to normalize the tensor before you call this function. Here is the usage:
