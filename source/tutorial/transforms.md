@@ -129,6 +129,44 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
+## torchvision_sunner.transforms.GrayStack [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L116)]
+
+Stack the gray-scale image for 3 times to become RGB image. If the input is already RGB image, this function do nothing. This function also accept the input tensor whose channel is 1. Here is the usage:
+
+```python
+import torch
+
+# Use it uniquely
+op = sunnertransforms.GrayStack(sunnertransforms.BHW2BCHW)
+input = torch.randn(32, 28, 28)
+input = op(input)
+print(input.size())
+# >> [32, 3, 28, 28]
+
+# The channel=1 case is Ok!
+input = torch.randn(32, 1, 28, 28)
+input = op(input)
+print(input.size())
+# >> [32, 3, 28, 28]
+
+# Use it with other augmentation
+op = torchvision.transforms.Compose([
+    sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
+    sunnertransforms.GrayStack(sunnertransforms.BHW2BCHW)
+])
+input = torch.randn(32, 28, 28)
+input = op(input)
+``` 
+
+#### Parameters
+(constructor)
+* **direction (int) -** The constant which is defined in ``torchvision_sunner.constant``. We only provide two direction now:
+    * ``sunnertransforms.BHW2BCHW``: Transfer the rank format from [batch, height, width] to [batch, 3, height, width]
+    * ``sunnertransforms.BTHW2BTCHW``: Transfer the rank format from [batch, time_step, height, width] to [batch, time_step, 3, height, width]    
+
+(inference)
+* **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
+
 ## torchvision_sunner.transforms.Resize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L14)]
 
 This function is complex operation. Resize the tensor into corresponding size. You **don't** need to normalize the tensor before you call this function. Here is the usage:
