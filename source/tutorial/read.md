@@ -43,3 +43,11 @@ def readItem(item_name):
     return file_obj
 ``` 
 The above quote shows the original definition of the function. This function will load the particular file. However, this function only handle for ``JPG`` and ``PNG`` only. **If you want to custom for your own data format (e.g. the ``.pth`` or ``.npy`` file format), you should revise by yourself!** Just add the other ``elif`` statement like the previous lines.
+
+---
+
+## The other example
+
+We are sorry that the master branch cannot include whole input data format since the user should install lots of related dummy package. However, we provide some link for you to refer if you want to use for the specific data format. The following shows the link:
+
+* DICOM format [[link](https://gist.github.com/SunnerLi/b90bc7bda7531045eedbf14ee4addfe3)] - used in medical scenario. 
