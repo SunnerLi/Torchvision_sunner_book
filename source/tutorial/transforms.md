@@ -137,22 +137,22 @@ Stack the gray-scale image for 3 times to become RGB image. If the input is alre
 import torch
 
 # Use it uniquely
-op = sunnertransforms.GrayStack(sunnertransforms.BHW2BCHW)
+op = sunnertransforms.GrayStack(sunnertransforms.BHW2BHWC)
 input = torch.randn(32, 28, 28)
 input = op(input)
 print(input.size())
-# >> [32, 3, 28, 28]
+# >> [32, 28, 28, 3]
 
 # The channel=1 case is Ok!
-input = torch.randn(32, 1, 28, 28)
+input = torch.randn(32, 28, 28, 1)
 input = op(input)
 print(input.size())
-# >> [32, 3, 28, 28]
+# >> [32, 28, 28, 3]
 
 # Use it with other augmentation
 op = torchvision.transforms.Compose([
+    sunnertransforms.GrayStack(sunnertransforms.BHW2BHWC)
     sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-    sunnertransforms.GrayStack(sunnertransforms.BHW2BCHW)
 ])
 input = torch.randn(32, 28, 28)
 input = op(input)
@@ -161,8 +161,8 @@ input = op(input)
 #### Parameters
 (constructor)
 * **direction (int) -** The constant which is defined in ``torchvision_sunner.constant``. We only provide two direction now:
-    * ``sunnertransforms.BHW2BCHW``: Transfer the rank format from [batch, height, width] to [batch, 3, height, width]
-    * ``sunnertransforms.BTHW2BTCHW``: Transfer the rank format from [batch, time_step, height, width] to [batch, time_step, 3, height, width]    
+    * ``sunnertransforms.BHW2BHWC``: Transfer the rank format from [batch, height, width] to [batch, height, width, 3]
+    * ``sunnertransforms.BTHW2BTHWC``: Transfer the rank format from [batch, time_step, height, width] to [batch, time_step, height, width, 3]    
 
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 

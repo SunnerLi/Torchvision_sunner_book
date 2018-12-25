@@ -13,8 +13,8 @@ print(sunnertransforms.UNDER_SAMPLING)
 * ``OVER_SAMPLING`` - The numeric value of this constant is ``1``. This constant represent the over sampling toward the data un-balance. You can refer to [here](data.html#class-torchvision-sunner-data-imagefolder-source) for further usage
 * ``BCHW2BHWC`` - The numeric value of this constant is ``0``. This constant represent to transfer the rank of tensor from ``BCHW`` to ``BHWC``. This constant may be used in [here](transforms.html#torchvision-sunner-transforms-transpose-source)
 * ``BHWC2BCHW`` - The numeric value of this constant is ``1``. This constant represent to transfer the rank of tensor from ``BHWC`` to ``BCHW``. This constant may be used in [here](transforms.html#torchvision-sunner-transforms-transpose-source)
-* ``BHW2BCHW`` - The numeric value of this constant is ``3``. This constant represent to transfer the rank of tensor from ``BHW`` to ``B3HW``. This constant may be used in [here](transforms.html#torchvision-sunner-transforms-graystack-source)
-* ``BTHW2BTCHW`` - The numeric value of this constant is ``4``. This constant represent to transfer the rank of tensor from ``BTHW`` to ``BT3HW``. This constant may be used in [here](transforms.html#torchvision-sunner-transforms-graystack-source)
+* ``BHW2BHWC`` - The numeric value of this constant is ``3``. This constant represent to transfer the rank of tensor from ``BHW`` to ``BHW3``. This constant may be used in [here](transforms.html#torchvision-sunner-transforms-graystack-source)
+* ``BTHW2BTHWC`` - The numeric value of this constant is ``4``. This constant represent to transfer the rank of tensor from ``BTHW`` to ``BTHW3``. This constant may be used in [here](transforms.html#torchvision-sunner-transforms-graystack-source)
 
 ### Categorical constant
 
