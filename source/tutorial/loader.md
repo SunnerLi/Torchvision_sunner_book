@@ -11,7 +11,7 @@ You can create the ``ImageLoader`` as usual:
 loader = sunnerData.ImageLoader(
     dataset = sunnerData.ImageDataset(
         root = [['image_folder']],
-        transform = transforms.Compose([
+        transforms = transforms.Compose([
             sunnertransforms.ToTensor(),
         ])
     ), batch_size=32, shuffle=False, num_workers = 2
@@ -23,7 +23,7 @@ Also, you can use ``DataLoader`` directly:
 loader = data.DataLoader(
     dataset = sunnerData.ImageDataset(
         root = [['image_folder']],
-        transform = transforms.Compose([
+        transforms = transforms.Compose([
             sunnertransforms.ToTensor(),
         ])
     ), batch_size=32, shuffle=False, num_workers = 2
@@ -46,11 +46,11 @@ This class can deal with multiple dataset object. The usage of ``MultiLoader`` i
 ```python
 dataset1 = sunnerData.ImageDataset(
     root = [['image_folder1']], 
-    transform = transforms_compose_op1
+    transforms = transforms_compose_op1
 )
 dataset2 = sunnerData.ImageDataset(
     root = [['image_folder2']], 
-    transform = transforms_compose_op2
+    transforms = transforms_compose_op2
 )
 loader = sunnerData.MultiLoader([dataset1, dataset2], num_workers = 2)
 ```

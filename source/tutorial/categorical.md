@@ -11,6 +11,7 @@ This function will obtain the pallete object. Here is the usage:
 ```python
 pallete = sunnertransforms.getCategoricalMapping(loader, path = 'pallete.json')
 ```
+* **Notice :** You should make sure the tensor data range is `[0, 255]`, and the rank format is `BHWC`. You can use `UnNormalize` and `Transpose` function to achieve the requirement!!!! Check out the example to see the [detail](example4.html) usage. 
 
 #### Parameters
 * **loader (torch.utils.data.DataLoader) -** The data loader. You should create the loader first which only contains the RGB colorful label domain.

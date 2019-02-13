@@ -9,7 +9,7 @@ loader = sunnerData.DataLoader(
         root = [
             ['./Dataset/flower/A'], 
             ['./Dataset/flower/B']
-        ], transform = transform_compose_obj, T = 10
+        ], transforms = transform_compose_obj, T = 10
     ), batch_size=2, shuffle=False, num_workers = 2
 )
 ```

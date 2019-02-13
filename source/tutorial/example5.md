@@ -4,7 +4,7 @@ The full program can be found [here](https://github.com/SunnerLi/Torchvision_sun
 ```python
 train_dataset = sunnerData.ImageDataset(
     root = [['image_folder']], 
-    transform = None, 
+    transforms = None, 
     split_ratio = 0.1, 
     save_file = True
 )
@@ -14,11 +14,11 @@ After that, the ``.split.pkl`` file is created. You can load ``.split.pkl`` to c
 ```python
 test_dataset = sunnerData.ImageDataset(
     file_name = '.split.pkl',
-    transform = transforms.Compose([
+    transforms = transforms.Compose([
         sunnertransforms.Resize((160, 320)),
         sunnertransforms.ToTensor(),
-        sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-        sunnertransforms.Normalize(),
+        sunnertransforms.ToFloat(),
+        sunnertransforms.Normalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5]),
     ])
 )
 ```

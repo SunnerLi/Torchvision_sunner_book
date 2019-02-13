@@ -8,11 +8,11 @@ img_dataset = sunnerData.ImageDataset(
     root = [
         ['./Datasets/Ear-Pen/train/img'], 
     ],
-    transform = transforms.Compose([
+    transforms = transforms.Compose([
         sunnertransforms.Resize((260, 195)),
         sunnertransforms.ToTensor(),
-        sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-        sunnertransforms.Normalize(),
+        sunnertransforms.ToFloat(),
+        sunnertransforms.Normalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5]),
     ]), save_file = False
 )
 ```
@@ -22,11 +22,11 @@ tag_dataset = sunnerData.ImageDataset(
     root = [
         ['./Dataset/Ear-Pen/train/tag']
     ],
-    transform = transforms.Compose([
+    transforms = transforms.Compose([
         sunnertransforms.Resize((260, 195)),
         sunnertransforms.ToTensor(),
-        sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-        sunnertransforms.Normalize(),
+        sunnertransforms.ToFloat(),
+        sunnertransforms.Normalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5]),
 
         # Add the new augmentation method
         sunnertransforms.CategoricalTranspose(

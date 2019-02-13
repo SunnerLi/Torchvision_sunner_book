@@ -13,6 +13,14 @@ transforms.Compose([
 ])
 ```
 
+However, since the updating of the version `19.3.15`, the `ToTensor` will transfer the image tensor into `BHWC` format automatically. As the result, if you use the whole function with `transforms.Compose`, then you just need to use them behind the `ToTensor`! Just like this:
+```python
+transforms.Compose([
+    sunnerTransforms.ToTensor(),
+    # other augmentation...
+])
+```
+
 **Q2: Which augmentations only accept the value range of [-1, 1]?**
 
 The ``CategoricalTranspose`` is the only augmentation which need to do the normalization first. We recommand you to call this function at last. For example:

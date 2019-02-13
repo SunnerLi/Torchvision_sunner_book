@@ -32,14 +32,16 @@ The above quote shows the original definition of the function. This function wil
 def readItem(item_name):
     file_type = item_name.split('.')[-1]
     if file_type == "png" or file_type == 'jpg':
-        file_obj = np.asarray(Image.open(item_name))
-        
-        if len(file_obj.shape) == 3:
-            # Ignore the 4th dim (RGB only)
-            file_obj = file_obj[:, :, :3]
-        elif len(file_obj.shape) == 2:
-            # Make the rank of gray-scale image as 3
-            file_obj = np.expand_dims(file_obj, axis = -1)
+        # Read the image by PIL 
+        file_obj = Image.open(item_name)
+
+        # Drop the alpha channel
+        if np.asarray(file_obj).shape[-1] == 4:
+            file_obj = Image.fromarray(np.asarray(file_obj)[:, :, :3], mode='RGB')
+
+        # Convert the image format if the image is gray-scale
+        if len(np.asarray(file_obj).shape) == 2:
+            file_obj = file_obj.convert('L')
     return file_obj
 ``` 
 The above quote shows the original definition of the function. This function will load the particular file. However, this function only handle for ``JPG`` and ``PNG`` only. **If you want to custom for your own data format (e.g. the ``.pth`` or ``.npy`` file format), you should revise by yourself!** Just add the other ``elif`` statement like the previous lines.

@@ -20,11 +20,11 @@ loader = sunnerData.DataLoader(sunnerData.ImageDataset(
         ['./Dataset/waiting_for_you_dataset/wait'], 
         ['./Dataset/waiting_for_you_dataset/real_world']
     ],
-    transform = transforms.Compose([
+    transforms = transforms.Compose([
         sunnertransforms.Resize((160, 320)),
         sunnertransforms.ToTensor(),
-        sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-        sunnertransforms.Normalize(),
+        sunnertransforms.ToFloat(),
+        sunnertransforms.Normalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5]),
     ])), batch_size=32, shuffle=False, num_workers = 2
 )
 ```

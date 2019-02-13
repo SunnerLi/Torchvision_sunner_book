@@ -2,7 +2,7 @@
 
 In the ``torchvision_sunner.data`` module, we provide for two different dataset: ``ImageFolder`` and ``VideoFolder``. You can load the images in different domain right away by using ``ImageFolder``. On the other hand, you can also load the video sequences in different domain right away by using ``VideoFolder``. 
 
-## class torchvision_sunner.data.ImageFolder [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/image_dataset.py#L35)]
+## class torchvision_sunner.data.ImageFolder [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/data/image_dataset.py#L34)]
 
 This is the fundemental class in ``torchvision_sunner``, and it's inherit from ``torch.utils.data.Dataset``. You can just create the instance by the following way. We assume the two different image folders are ``image_folder1`` and ``image_folder2``. 
 ```python
@@ -12,7 +12,7 @@ dataset = sunnerData.ImageDataset(
         ['image_folder2']
     ],
     file_name = '.remain.pkl',
-    transform = transforms.Compose([
+    transforms = transforms.Compose([
         sunnertransforms.ToTensor(),
     ])
 )
@@ -54,7 +54,7 @@ You can use the loader just the same as usual ``torch.utils.data.Dataset`` insta
 
 * **sample_method (int) -** The method to deal with data unbalance. Since the number of images may not the same in different domains. We provide for **under sampling** or **over sampling** two choice. You can assign as ``torchvision_sunner.UNDER_SAMPLING`` or ``torchvision_sunner.OVER_SAMPLING``, respectively. 
 
-* **transform (torchvision.transforms.Compose) -** The series of augmentation. You can use the augmentation methods which are defined in ``torchvision_sunner.transforms``. Check the [page](transforms.html) for the detail
+* **transforms (torchvision.transforms.Compose) -** The series of augmentation. You can use the augmentation methods which are defined in ``torchvision_sunner.transforms``. Check the [page](transforms.html) for the detail
 
 * **split_ratio (float) -** The ratio to do the train-test split. The range of this ratio is between 0 to 1. The split process will not be conducted if you set the ratio as ``0.0``. The default is ``0.0``. 
 
@@ -70,7 +70,7 @@ dataset = sunnerData.ImageDataset(
         ['video_folder2']
     ],
     file_name = '.remain.pkl',
-    transform = transforms.Compose([
+    transforms = transforms.Compose([
         sunnertransforms.ToTensor(),
     ])
 )
@@ -101,7 +101,7 @@ The parameters are very similar to the ``ImageFolder``.
 
 * **sample_method (int) -** The method to deal with data unbalance. Since the number of videos may not the same in different domains. We provide for **under sampling** or **over sampling** two choice. You can assign as ``torchvision_sunner.UNDER_SAMPLING`` or ``torchvision_sunner.OVER_SAMPLING``, respectively. 
 
-* **transform (torchvision.transforms.Compose) -** The series of augmentation. You can use the augmentation methods which are defined in ``torchvision_sunner.transforms``. Check the [page](transforms.html) for the detail
+* **transforms (torchvision.transforms.Compose) -** The series of augmentation. You can use the augmentation methods which are defined in ``torchvision_sunner.transforms``. Check the [page](transforms.html) for the detail
 
 * **split_ratio (float) -** The ratio to do the train-test split. The range of this ratio is between 0 to 1. The split process will not be conducted if you set the ratio as ``0.0``. The default is ``0.0``. 
 

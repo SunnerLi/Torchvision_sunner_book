@@ -17,7 +17,7 @@ This function define the process while the instance is called.
 #### Parameters
 * **tensor (arbitrary) -** The tensor you want to deal with. The type of this parameter can be ``torch.Tensor`` or ``np.ndarray``. Also, the length of tensor rank can be 4 or 5. 
 
-## torchvision_sunner.transforms.ToTensor [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L13)]
+## torchvision_sunner.transforms.ToTensor [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L19)]
 
 Change the type of tensor as ``torch.Tensor``. If the type of input is already ``torch.Tensor``, the function will return the parameters directly. Here is the usage:
 ```python
@@ -32,10 +32,26 @@ op = torchvision.transforms.Compose([
 input = op(input)
 ``` 
 
+Luckily, we revise the usage as the same as official torchvision in version `19.3.15`. As the result, you should notice the different output of this function. 
+1. For the other type input (not image type input), the function is the same.
+2. For the image type input, the result will become calling `ToTensor`, `Normalize(mean=[0, 0, 0], std=[1/127.5, 1/127.5, 1/127.5])` and `Transpose(sunnertransforms.BHWC2BCHW)` at the same time. Here is the difference:
+```python
+# Previous usage to deal with image
+op = torchvision.transforms.Compose([
+    sunnertransforms.ToTensor(),
+    sunnertransforms.Normalize(mean = [0, 0, 0], std = [127.5, 127.5, 127.5]),
+    sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW)
+])
+# Current usage to achieve the same effect
+op = torchvision.transforms.Compose([
+    sunnertransforms.ToTensor(),
+])
+```
+
 #### Parameters
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.ToFloat [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L28)]
+## torchvision_sunner.transforms.ToFloat [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L50)]
 
 Change the type of tensor as float type, which means ``torch.FloatTensor``. You should notice that this function should be called **after you wnsure the type of tensor is ``torch.Tensor``**. Here is the usage:
 ```python
@@ -54,7 +70,7 @@ input = op(input)
 #### Parameters
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.Transpose [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L41)]
+## torchvision_sunner.transforms.Transpose [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L64)]
 
 Transpose the rank format toward the given tensor. You should be careful to ensure the rank format while you use this function. Here is the usage:
 
@@ -79,7 +95,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.RandomHorizontalFlip [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L68)]
+## torchvision_sunner.transforms.RandomHorizontalFlip [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L89)]
 
 Flip the tensor toward horizontal direction randomly. Here is the usage:
 
@@ -104,7 +120,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.RandomVerticalFlip [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L92)]
+## torchvision_sunner.transforms.RandomVerticalFlip [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L113)]
 
 Flip the tensor toward vertical direction randomly. Here is the usage:
 
@@ -129,7 +145,7 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.GrayStack [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L116)]
+## torchvision_sunner.transforms.GrayStack [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L137)]
 
 Stack the gray-scale image for 3 times to become RGB image. If the input is already RGB image, this function do nothing. This function also accept the input tensor whose channel is 1. Here is the usage:
 
@@ -167,11 +183,9 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.Resize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L14)]
+## torchvision_sunner.transforms.Resize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/simple.py#L167)]
 
-This function is complex operation. Resize the tensor into corresponding size. You **don't** need to normalize the tensor before you call this function. Here is the usage:
-
-* **Notice :** You should transfer the tensor into rank format ``BCHW`` first.
+Resize the tensor into corresponding size. You **should** call this function before `ToTensor()`. Here is the usage:
 
 ```python
 # Use it uniquely
@@ -180,11 +194,13 @@ input = op(input)
 
 # Use it with other augmentation
 op = torchvision.transforms.Compose([
-    sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-    sunnertransforms.Resize(output_size = (320, 640))
+    sunnertransforms.Resize(output_size = (320, 640)),
+    sunnertransforms.ToTensor()
 ])
 input = op(input)
 ``` 
+
+Luckily, Torchvision_sunner adopt the usage of original torchvision in version `19.3.15`. As the result, the input and output of this function should be `PIL.Image.Image`. On the other hand, you can use less line to achieve the same function than the previous usage!
 
 #### Parameters
 (constructor)
@@ -193,63 +209,63 @@ input = op(input)
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.Normalize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L53)]
+## torchvision_sunner.transforms.Normalize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L68)]
 
-This function is complex operation. Normalize the tensor for the given tensor. If you don't assign mean and std, then we treat the range of input tensor is [0, 255]. Here is the usage:
+This function is complex operation. Normalize the tensor for the given tensor. If you don't assign mean and std, then we treat the range of input tensor is `[0, 1]`. From the version `19.3.15`, we will adopt the same mean and std as VGG preprocessing setting (mean is `[0.485, 0.456, 0.406]`, and std is `[0.229, 0.224, 0.225]`). Here is the usage:
 
 * **Notice :** You should transfer the tensor into rank format ``BCHW`` first.
 * **Notice :** You should call ``ToFloat()`` first.
 
 ```python
 # Use it uniquely
-op = sunnertransforms.Normalize(mean = [127.5, 127.5, 127.5], std = [127.5, 127.5, 127.5])
+op = sunnertransforms.Normalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5])
 input = op(input)
 
 # Use it with other augmentation
 op = torchvision.transforms.Compose([
     sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
     sunnertransforms.ToFloat(),
-    sunnertransforms.Normalize(mean = [127.5, 127.5, 127.5], std = [127.5, 127.5, 127.5]),
+    sunnertransforms.Normalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5]),
 ])
 input = op(input)
 ``` 
 
 #### Parameters
 (constructor)
-* **mean (list) -** The mean of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[127.5, 127.5, 127.5]``
-* **std (list) -** The std of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[127.5, 127.5, 127.5]``
+* **mean (list) -** The mean of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[0.485, 0.456, 0.406]``
+* **std (list) -** The std of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[0.229, 0.224, 0.225]``
 
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.UnNormalize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L93)]
+## torchvision_sunner.transforms.UnNormalize [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L117)]
 
-This function is complex operation. Un-normalize the tensor for the given tensor. If you don't assign mean and std, then we treat the range of input tensor is [0, 255]. Here is the usage:
+This function is complex operation. Un-normalize the tensor for the given tensor. If you don't assign mean and std, then we treat the range of input tensor is [0, 1]. From the version `19.3.15`, we will adopt the same mean and std as VGG preprocessing setting (mean is `[0.485, 0.456, 0.406]`, and std is `[0.229, 0.224, 0.225]`). Here is the usage:
 
 * **Notice :** You should transfer the tensor into rank format ``BCHW`` first.
 
 ```python
 # Use it uniquely
-op = sunnertransforms.UnNormalize(mean = [127.5, 127.5, 127.5], std = [127.5, 127.5, 127.5])
+op = sunnertransforms.UnNormalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5])
 input = op(input)
 
 # Use it with other augmentation
 op = torchvision.transforms.Compose([
     sunnertransforms.Transpose(sunnertransforms.BHWC2BCHW),
-    sunnertransforms.UnNormalize(mean = [127.5, 127.5, 127.5], std = [127.5, 127.5, 127.5]),
+    sunnertransforms.UnNormalize(mean = [0.5, 0.5, 0.5], std = [0.5, 0.5, 0.5]),
 ])
 input = op(input)
 ``` 
 
 #### Parameters
 (constructor)
-* **mean (list) -** The mean of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[127.5, 127.5, 127.5]``
-* **std (list) -** The std of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[127.5, 127.5, 127.5]``
+* **mean (list) -** The mean of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[0.485, 0.456, 0.406]``
+* **std (list) -** The std of pixel in RGB order. You should make sure that the length of list should be the same as the channel number of given tensor. The default is ``[0.229, 0.224, 0.225]``
 
 (inference)
 * **tensor (np.ndarray or torch.Tensor) -** The tensor you want to deal with. 
 
-## torchvision_sunner.transforms.ToGray [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L125)]
+## torchvision_sunner.transforms.ToGray [[source](https://github.com/SunnerLi/Torchvision_sunner/blob/master/torchvision_sunner/transforms/complex.py#L150)]
 
 This function is complex operation. Transfer the tensor into gray-scale. Here is the usage:
 
